@@ -1,0 +1,30 @@
+
+create a class Car
+
+    seatCount: int
+
+    price: float 
+
+    wheelBase: float
+
+    ctype: ChassisType {CARBON, FIBER, STEEL}
+ 
+create a class Brand
+
+    type: BrandType {CONSUMER, SPECIAL, TRANSPORT}
+
+    tradeMark: string
+
+    car: Crete an array of reference of car of 3 objects
+ 
+Functionalities
+
+    i) CreateObject of these class
+
+    ii) Return those Brands whose BrandType matches with the argument passed as an parameter
+
+    iii) Return those cars whose threshold value is more than the price passed as a parameter
+
+    iv) print the chassis type whose price is lowest 
+
+    v) check whether all cars have seat more than 4 and return the boolean'

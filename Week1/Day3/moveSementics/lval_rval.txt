@@ -1,0 +1,48 @@
+void magic(std:vector<int> val);
+
+scenario 1: 
+Design the function to accept lval and rval both. Allow the user to assignment of rval
+
+example:
+       magic(std::vector<int> {1,2,3,})
+    //assign to val 
+
+example : 
+    std::vector<int> v1 {1,2,3,}
+    magic(v1)
+
+
+scenario 2:
+lval to be accepted by the refrence
+no rvalno 
+no copy of data data should become accessible by magic
+
+void magic(std::vector<int>& val);
+
+example: 
+    std::vector<int> v1{1,2,3,4};
+    magic(v1); //by reference
+
+
+scenario 3:
+i only want a single copy of data.
+i only want rval so that user cannot create a duplicate data in caller function
+
+void magic(std::vector<int>&& val);
+
+example: 
+    std::vector<int> v1{1,2,3,4};
+    magic(v1); //by reference, compile time error
+    magic(std::vector<int>{1,2,3,4}); //okay!
+    magic(std::move(v1)); //okay : move function return the rval of argument
+
+scenario 4:
+i want to design a functon where, lval are accept by reference i also want to be accepted by assignment.
+
+void magic(const std::vector<int>& val);
+
+example:
+    magic(v1); //by reference, okay
+    magic(std::vector<int>{1,2,3}); //okay
+    magic(std::move(v1)); //by rval reference, okay
+

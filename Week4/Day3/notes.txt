@@ -1,0 +1,29 @@
+for(int i=0;i<row;i++){
+    for(int j=0;j<col;j++){
+        std::cout<<i*j<<" ";
+    }
+}
+
+--> O(row*col);
+
+// Linea search
+operation : Access item and compare!
+N : size of elements to be checked
+
+Time complexcity : O(N)
+
+Time complexcity is concerned about "How many operations" per input elements.
+
+step 1 : Always find relation between N (number of input items) and operation where "operation" is context specific
+    e.g. : 
+        In Liner search, operation is access element and compare.
+        In Binary search, check middle, if found, okay else divide.
+
+        return a boolean to indicate wheather at least one car has price over 7 lacs
+
+
+Bubble Sort : 
+~                                          N(N+1)         N^2 + N
+~    N + N-1 + N-2 + N-3 + ... + 1    =  ----------  =  -----------
+~                                           2               2
+

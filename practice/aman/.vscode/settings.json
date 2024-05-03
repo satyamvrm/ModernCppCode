@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "memory": "cpp",
+        "variant": "cpp",
+        "thread": "cpp",
+        "iostream": "cpp"
+    }
+}

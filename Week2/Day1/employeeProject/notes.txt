@@ -1,0 +1,11 @@
+if you take pointer of class B in class A
+we say that classs A is composed with class B as a member
+
+if you take referance of class B in class A
+we say that classs A is aggreated with class B as a member
+
+
+composition : If class A obj is distroyed, attached class B obj is also supposed  to be distroyed
+
+aggregration : If class A obj is distroyed, attached class B obj should not get destroyed
+

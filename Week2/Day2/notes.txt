@@ -1,0 +1,7 @@
+void Adaptop(LOGIC)
+
+1. app start --> APP ID 
+    it has to be carried into the second function
+
+2. network setup : 
+    we get ip address and ort number, has to carried in third function

@@ -1,0 +1,18 @@
+Implement a C++ program that performs the following tasks:
+
+It prompts the user to enter the number of rows and columns for a 2D array.
+It then asks the user to fill in the data for each cell of the array.
+
+After filling in the data, it calculates and displays the sum of each row of the array. -> SumOfEachRow()
+
+It also determines and prints the maximum element in each column of the array. -> MaxOfEachColumn()
+
+Finally, it calculates and shows the square of the last element of the array. -> SquareOfLastElement()
+
+Ensure that your program is modular and utilizes function pointers in C++ to execute different operations on the array.
+Your program should adhere to the following specifications:
+Define functions to perform each of the tasks mentioned above: fillData, sumRow, maxRow, and lastSquare.
+Use a function called Adaptor that accepts a function pointer and executes the corresponding function with the given parameters.
+Use dynamic memory allocation to create a 2D array based on the user-provided dimensions.
+Properly deallocate the memory after the tasks are completed.
+Write the C++ program fulfilling the above requirements.

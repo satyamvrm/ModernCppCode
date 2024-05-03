@@ -1,0 +1,80 @@
+seguay : a smooth transition
+
+[  "Satyam"  | 80000 | "IT" | 10 ]
+[  "Ayush"   | 88000 | "IT" | 10 ]
+[ "Himanshu" | 80000 | "HR" | 10 ]
+[ "Ksritij"  | 80000 | "CE" | 10 ]
+
+=================================================================================================================
+
+Option 1:
+store object in fixed sized container with contiguous storage
+Benefitd:
+    - random access
+    - easy to find next and previous
+    - no tension of resize or change in lenght
+Answer : Array data structure
+CPP : std::array<T,N,////>;
+
+Note:
+    - an array of size n when declared, immediately reserve spaces for n items this means, N default constructors will happen at the time of declaration
+
+=================================================================================================================
+
+Option 2:
+store object in dynamically resize container which can be use like a array with reservation for element or by pushing when reqired and resizing if necessary
+
+Answer : Vector arrangement
+CPP : std::vector<T,////>;
+
+benifits : 
+    - You can resize the container during runtime of the program
+    - You can access element via index,
+notes:
+    - If you add element beyond capasity, vector has to readjust. sometimes vector connot expand adjecent to its bouandry. In such cases, a complete shift happen.
+
+=================================================================================================================
+
+Option 3:
+I would like to store data anywhere in RAM as long as i can fetch it when i want it. Data items should be "linked" to each other .
+
+Answer : linked list
+CPP : std::forward_list:(singlly linked list)
+        std::list (doubly linked list)
+
+=================================================================================================================
+
+Option 4:
+Tag     Data
+[101]     [ 101 |  "Satyam"  | 80000 | "IT" | 10 ]
+[102]     [ 102 |  "Ayush"   | 88000 | "IT" | 10 ]
+[103]     [ 103 | "Himanshu" | 80000 | "HR" | 10 ]
+[104]     [ 104 | "Ksritij"  | 80000 | "CE" | 10 ]
+
+//fix a mathametical way to put the data [which row]
+//we can use the same mathametical formula to determine
+//where data is when i need to read it later
+
+//formula[hash function] modulus 9
+a. 101%9 = 2 //row 2
+b. 102%9 = 3 //row 3
+c. 103%9 = 4 //row 4
+d. 104%9 = 5 //row 5
+
+[  ] [                ]     row[0]
+[  ] [                ]     row[1]
+[101] [ 101 |  "Satyam"  | 80000 | "IT" | 10 ]  row[2]
+[102] [ 102 |  "Ayush"   | 88000 | "IT" | 10 ]  row[3]
+[  ] [                ]     row[4]
+[  ] [                ]     row[5]
+[  ] [                ]     row[6]
+[  ] [                ]     row[7]
+[  ] [                ]     row[8]
+
+
+//find the salary of the employee whose employeeId is 102.
+102 % 9 = 3 --> data is on row 3
+
+
+
+// infinite data in future

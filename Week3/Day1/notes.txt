@@ -1,0 +1,69 @@
+1. What are we doing?
+    - we are trying to do more work in our system per second
+            OR
+    - i want more efficiency in my program for which i want to my hardware better
+
+2. How?
+    - by using the is for support. we are requesting os to run indempendentlly sections of my program parallaly if possible or concurrently if nothing else works out!
+
+3. Syntax wise what we do?
+    - Each of your indepenedent functions can be treated "logical threads" They can be schedule by OS if you create a thread object and attach it to one callable with right parameter
+    - Also remember to wait for threads to finish
+                OR
+    - Detach from spawned threads
+
+4. Why did you join thread?
+    - Because main thread cannot finish before other threads as spawned threads need to report back to main via signals. If main is alread finished, then thread has to become daemon thread (thread running in the background). 
+
+5. What is std::thred?
+    - it is a class which is a wrapper around a native plateform specific OS-level threads.
+
+6. Can we copy threads?
+    - No, once a mini program is started, coping it would mean duplicating and doing the same thing again!
+
+7. Can we make a container of thread?
+    - yes, since thread instacnes are objects, you can do this!
+
+8. What is a race condition?
+    - 2 or more threads are fighting TO PERFORM A WRITE OPERATION ON A SHARED MEMORY
+
+9. What is a critical sectoin?
+    - any part of the program where race condition can happen to cause data integrity issue, incoherent output, or worse!
+
+10. How to avoid race condition>
+    - Take action to synchronized thread ESPECIALLY FOR CRITICAL sections
+
+11. Syntactically, how to do this?
+    - CHoose b/w the plethora (too many) of available choices for synchronization primitived
+    - mutex : a binary semaphore which needs to locked/ unlocked manually
+    -lock_gaurd : which is a scope based lock that 
+    -unique_lock : it can be locked/unlocked manully as well with RAII rules
+    - recurssive lock : if you want to use recurssion and thread
+    - condition variable : to implemnet sync based on producer/consumer model
+
+12. How will i know which to use?
+    - common sense
+
+13. Where i will learn this?
+    - CPP con and Concurrency in action
+
+14. why i am doing this?
+    - because all developer need to use hardware efficiently
+
+15. What is this synchronous and asynchronous stuff?
+    - If you start commands/istruction N only after command n-1 is fully completed, execution is synchronous
+    else asynchronous
+
+
+
+
+try{
+    mt.lock();
+    amount -= 10;
+    PerformAction();
+    mt.unlock();
+}catch(std::run_time_error& ex){
+    mt.unlock();
+    std::cout<<ex.what()<<'\n';
+    RecordLogsOfException();
+}

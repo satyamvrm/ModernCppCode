@@ -1,0 +1,9 @@
+Default and delete special member 
+override
+member list initialization
+in class initialization
+for each loop
+enum class
+constructor deligation
+uniform initialization {} to initalize what ever we want
+ 

@@ -1,0 +1,27 @@
+1. std::thread
+-one thread
+-container of thread
+-std::mutex for race condition
+- std::lock_gaurd to manage mutex based on scope
+
+2. If initializer
+
+3. std::opetional
+
+4. structureed binding
+
+5. std::variants
+- functional polymorphism
+- std::visit, std::holds_alternative
+
+6. std::conditional_variable
+- unique_lock
+- notification mechanism
+
+7. std::async
+- with future_input
+- without future_input
+
+8. variadic templete
+
+9. fold expression

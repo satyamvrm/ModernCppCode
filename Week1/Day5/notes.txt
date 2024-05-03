@@ -1,0 +1,138 @@
+-------------------------------------------------------------------------------------------------
+#encapsulation :
+we need to hold the internal representation of the object from any party/entitiy/line of code outside the class. you can use data binding this by
+
+-------------------------------------------------------------------------------------------------
+# data binding :
+the concept of relating/ binding member function with data member
+
+-------------------------------------------------------------------------------------------------
+#abstraction :
+hiding the impementation detail of a behaviour (functionalities) so that
+a> it allows programmers to reimplement a functionality in a different way down the class hierarchy by overriding in child classes 
+b> by using abstraction we can talk in "abstract" term while explaining behaviour 
+
+-------------------------------------------------------------------------------------------------
+Tips:
+1. read the problem statement completely twice at least
+2. naming convention should be priotize
+3. compile program only when it is fully completed
+4. always work on indii=vidual function only
+    -> breakdown entire solution into small small problem
+5. always draw a diagram
+6. spend more time in designing each solution rather than impementation
+
+-------------------------------------------------------------------------------------------------
+#virtual :
+Scenario 1 : I want to model some data. Bind member with accessible perform basic operations
+    - create a simple class
+    - bind data member with member functions. Keep all data private
+
+Scenario 2 : I want to create types and sub types so that i can genralize or implement specifiv solution for specific sub catageoris.
+    - create a present class and apporiate child classes. Then, ask the following question
+        a.  Are all the method implemented in all classes?
+            - If yes, no need for pure virtual functions
+        b. Are we going to create objects of multiple child classes and store them togeatehr in the same container?
+            - if yes, we need to use upcasting.
+            - base class methd must as virtual
+            - destructor must be marked as virtual
+        c. do we need ti make the base class abstract/ Do we need to prevent instrantiation(object creation for base class)?
+            - make sure atleast one method in the parent marked as virtual
+        d. i'm not very sure if method will be overridden. maybe in future not sure currently.
+            - mark all such method as virtual.
+
+-------------------------------------------------------------------------------------------------
+
+class A{
+    ...
+    ...
+    static //hidden member *vptr;
+    public:
+    virtual void display(){cout<<"A display";}
+    void test(){cout<<"a test";}
+};
+
+class B : public A {
+    ...
+    ...
+    public:
+    void display() override {cout<<"A display";}
+    void test(){cout<<"b test";}
+}
+
+
+rule 1  : for a class that contains atleast one virtual method 
+a virtual table is created in memory this table has address for the virtual method function
+
+class A vtable
+[A::display() :: 0x10045h]
+0x777H
+  ^
+  |
+[vptr]
+
+rule 2 : if a class inherit from a parent class that also contain a vtable, the child will also implement its own vtable
+
+A* ptr = new B();
+ptr->display(); //b's display
+ptr->test(); //a's display
+//step 1 : verify where is display()
+    - go to class whose type is ptr type
+    -goto A class. verify wheather this functionis at least declare in class A.
+//step 2 : verify is the method is non-virtual. if yes, call the function
+    - if function is virtual proceed to steo 2
+//step 3 : now find the type of rhs(object type) find the vtable for the object and call function based on entry in vtable 
+
+
+parent ptr --> child obj ====> upcasting
+// A* ptr = new B(); here A is parent and B is child
+
+child ptr --> parent obj ====> downcast we genrally don't do it we use dynamic cast
+// Parent *ptr = new Child();
+   Child *temp = dynamic_cast<Child *>(ptr);
+
+Assumption : pointer is of parent type
+1. i want to call fn. fn exist in the parent. fn aslo exist in the child. BUt fn is non virtual
+        we can use ptr->fn() //this will call parent
+        YOU CAN USE DYNAMIC CAST TO CONVERT PTR INTO CHILD AND THEN CHILD::FN
+
+2. i want to call fn. fn exist in the parent. fn doesn't exist in the child. BUt fn is non virtual
+        we can use ptr->display() // A::fn()
+        YOU SHOULD NOT USE DYNAMIC BECAUSE FN DOES NOT EXIST IN THE CHILD. SO WHAT'S THE BLOODY POINT
+
+3. i want to call fn fn exist in child not in parent fn is non virtual
+        PARENT POINTER IS PRACTICALLY USELESS. WE HAVE TO DO DYNAMIC CAST
+
+4. i want to call fn fn exist in the parent fn also exist in child but fn is virtual
+
+    compiler will call the most derived version of fn from the inheritancd hierarchy
+
+                            parent
+                            /    \
+                           /      \
+                        child1   child2
+
+                    Parent *p = new child2();
+
+
+-------------------------------------------------------------------------------------------------
+Errors:
+
+1. #undefined reference to <function-name>
+    - The function does not exist
+
+2. <identifier not declared in scope
+    - function name being used does not apper in declared symbol.
+    - variable declared does not apper in availabe names.
+
+3. redefination of class    
+    - if we missout the header gaurd
+
+4. too few argument 
+    - function may be called by less no of argument
+
+5. invalid initilizaion 
+    - this happen when we call by referance and the input type is different
+
+6. no matching function call
+    - 
